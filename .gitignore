@@ -1,0 +1,40 @@
+# Build output
+/bin/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Go test / coverage artifacts
+*.test
+*.out
+coverage.*
+
+# Downloaded / generated infrastructure artifacts (never commit these)
+*.gguf
+*.zip
+*.tar.gz
+/models/
+
+# Generated WireGuard configs and key material (sensitive)
+*.conf
+*.key
+*_private*
+wg*.conf
+
+# Local runtime state and logs
+*.log
+/logs/
+
+# Environment / secrets
+.env
+.env.*
+
+# OS cruft
+.DS_Store
+Thumbs.db
+
+# Editor/IDE
+.idea/
+*.swp
+*~
