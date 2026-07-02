@@ -84,6 +84,14 @@ func (c *Config) resolveDefaults() {
 	if p.LogDir == "" {
 		p.LogDir = filepath.Join(p.InstallDir, "logs")
 	}
+
+	src := &c.Models.Source
+	if src.BaseURL == "" {
+		src.BaseURL = "https://huggingface.co"
+	}
+	if src.FileURLTemplate == "" {
+		src.FileURLTemplate = "{base}/{repo}/resolve/main/{file}"
+	}
 }
 
 // Validate checks that required fields are present and internally consistent.

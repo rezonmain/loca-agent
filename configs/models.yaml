@@ -10,6 +10,13 @@
 
 default: qwen3-coder-30b-a3b
 
+# Where model files are fetched from. The template is expanded with {base},
+# {repo}, and {file}. Point base_url elsewhere (or change the template) to use a
+# mirror or a different host without touching any Go code.
+source:
+  base_url: "https://huggingface.co"
+  file_url_template: "{base}/{repo}/resolve/main/{file}"
+
 models:
   - id: qwen3-coder-30b-a3b
     name: "Qwen3-Coder 30B-A3B (MoE, Instruct)"

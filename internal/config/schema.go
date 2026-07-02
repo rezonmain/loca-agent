@@ -42,8 +42,16 @@ func (v Versions) WindowsAssetName() string {
 
 // ModelRegistry is the pluggable catalog of installable models.
 type ModelRegistry struct {
-	Default string  `yaml:"default"`
-	Models  []Model `yaml:"models"`
+	Default string      `yaml:"default"`
+	Source  ModelSource `yaml:"source"`
+	Models  []Model     `yaml:"models"`
+}
+
+// ModelSource describes where model files are downloaded from. FileURLTemplate
+// is expanded with the {base}, {repo}, and {file} placeholders.
+type ModelSource struct {
+	BaseURL         string `yaml:"base_url"`
+	FileURLTemplate string `yaml:"file_url_template"`
 }
 
 // Model describes a single GGUF model and its download files.

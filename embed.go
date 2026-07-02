@@ -15,3 +15,10 @@ import "embed"
 //
 //go:embed configs/*.yaml
 var Defaults embed.FS
+
+// Templates contains the text/template files rendered at install time
+// (WireGuard configs, OpenCode config, llama.cpp launch args), addressable as
+// "templates/<area>/<name>.tmpl".
+//
+//go:embed templates/wireguard/*.tmpl
+var Templates embed.FS

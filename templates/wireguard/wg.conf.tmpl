@@ -1,0 +1,24 @@
+[Interface]
+PrivateKey = {{ .Interface.PrivateKey }}
+Address = {{ .Interface.Address }}
+{{- if .Interface.ListenPort }}
+ListenPort = {{ .Interface.ListenPort }}
+{{- end }}
+{{- if .Interface.DNS }}
+DNS = {{ .Interface.DNS }}
+{{- end }}
+{{ range .Peers }}
+# {{ .Name }}
+[Peer]
+PublicKey = {{ .PublicKey }}
+{{- if .PresharedKey }}
+PresharedKey = {{ .PresharedKey }}
+{{- end }}
+AllowedIPs = {{ join .AllowedIPs ", " }}
+{{- if .Endpoint }}
+Endpoint = {{ .Endpoint }}
+{{- end }}
+{{- if .Keepalive }}
+PersistentKeepalive = {{ .Keepalive }}
+{{- end }}
+{{ end -}}
