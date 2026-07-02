@@ -20,5 +20,5 @@ var Defaults embed.FS
 // (WireGuard configs, OpenCode config, llama.cpp launch args), addressable as
 // "templates/<area>/<name>.tmpl".
 //
-//go:embed templates/wireguard/*.tmpl
+//go:embed templates/wireguard/*.tmpl templates/opencode/*.tmpl
 var Templates embed.FS

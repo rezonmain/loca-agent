@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "provider": {
+    {{ json .ProviderID }}: {
+      "npm": {{ json .NPMPackage }},
+      "name": {{ json .ProviderName }},
+      "options": {
+        "baseURL": {{ json .BaseURL }}
+      },
+      "models": {
+        {{ json .ModelID }}: {
+          "name": {{ json .ModelName }}
+        }
+      }
+    }
+  }
+}
