@@ -1,0 +1,40 @@
+# models.yaml
+#
+# The pluggable model registry. Add a model by adding an entry here — no Go
+# code changes required. `default` selects which model is installed when the
+# user does not pick one explicitly.
+#
+# sha256 values are left blank in the shipped defaults; populate them to enable
+# integrity verification after download (strongly recommended). A blank value
+# means "download but skip verification" and will emit a warning.
+
+default: qwen3-coder-30b-a3b
+
+models:
+  - id: qwen3-coder-30b-a3b
+    name: "Qwen3-Coder 30B-A3B (MoE, Instruct)"
+    repo: "Qwen/Qwen3-Coder-30B-A3B-Instruct-GGUF"
+    quant: "Q4_K_M"
+    files:
+      - name: "Qwen3-Coder-30B-A3B-Instruct-Q4_K_M.gguf"
+        sha256: ""
+    context_length: 32768
+    min_vram_gb: 16
+    recommended_vram_gb: 24
+    notes: >
+      MoE model with ~3B active parameters. Recommended default for the
+      RX 9070 XT (16 GB): fast and fits with room to spare.
+
+  - id: qwen2.5-coder-32b
+    name: "Qwen2.5-Coder 32B (dense, Instruct)"
+    repo: "Qwen/Qwen2.5-Coder-32B-Instruct-GGUF"
+    quant: "Q4_K_M"
+    files:
+      - name: "qwen2.5-coder-32b-instruct-q4_k_m.gguf"
+        sha256: ""
+    context_length: 32768
+    min_vram_gb: 24
+    recommended_vram_gb: 32
+    notes: >
+      Dense 32B alternative. Q4_K_M is ~19-20 GB and will NOT fully fit in
+      16 GB VRAM; expect partial CPU offload and slower generation.

@@ -1,0 +1,24 @@
+# installer.yaml
+#
+# Installation paths, service identity, and backend selection. Empty path
+# values are resolved to sensible per-OS defaults at runtime (see
+# internal/config). Set them explicitly to override.
+
+paths:
+  install_dir: "" # e.g. Windows: C:\ProgramData\bootstrap-ai ; macOS: ~/.bootstrap-ai
+  model_dir: "" # defaults to <install_dir>/models
+  config_dir: "" # defaults to the OS user config dir /bootstrap-ai
+  log_dir: "" # defaults to <install_dir>/logs
+
+service:
+  # Windows service identity for the llama.cpp inference server.
+  name: "bootstrap-ai-llama"
+  display_name: "bootstrap-ai llama.cpp inference server"
+
+# Inference backend for llama.cpp. "vulkan" is the default for AMD on Windows.
+# Overridable: "vulkan" | "cpu" | "cuda" | "rocm".
+backend: "vulkan"
+
+# Windows service supervisor for the (non-service-aware) llama-server.exe.
+# "nssm" bundles the NSSM supervisor; "native" uses New-Service with a shim.
+service_supervisor: "nssm"

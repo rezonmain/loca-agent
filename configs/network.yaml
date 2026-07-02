@@ -1,0 +1,29 @@
+# network.yaml
+#
+# WireGuard tunnel addressing and the inference endpoint. The client list is a
+# list from day one so additional macOS clients can be added later without a
+# schema change.
+
+wireguard:
+  # Tunnel subnet. Addresses below must fall inside it.
+  subnet: "10.50.0.0/24"
+  # The Windows AI server's tunnel address.
+  server_address: "10.50.0.1"
+  # Client tunnel addresses. The first is the primary macOS client.
+  client_addresses:
+    - "10.50.0.2"
+  # UDP port the server listens on for WireGuard.
+  listen_port: 51820
+  # Persistent keepalive (seconds) so the client stays reachable behind NAT.
+  keepalive_seconds: 25
+
+inference:
+  # Bind the llama.cpp server to the tunnel address only — never 0.0.0.0 — so
+  # the model is unreachable outside WireGuard even if a firewall rule is wrong.
+  listen_address: "10.50.0.1"
+  # OpenAI-compatible server port.
+  port: 8080
+  # API base path OpenCode targets: <scheme>://<server>:<port><path>
+  path: "/v1"
+  # "http" is safe inside the encrypted tunnel; "https" is supported later.
+  scheme: "http"

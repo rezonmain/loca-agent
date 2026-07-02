@@ -1,0 +1,24 @@
+# versions.yaml
+#
+# Pinned versions and release artifacts for every external dependency.
+# Nothing in the Go code hardcodes a version — it all comes from here.
+#
+# {tag} is substituted with llama_cpp.release_tag when resolving asset names.
+
+llama_cpp:
+  # GitHub release tag from ggml-org/llama.cpp releases.
+  release_tag: "b4585"
+  # Windows prebuilt asset carrying the Vulkan backend (AMD-friendly).
+  # {tag} is replaced at runtime.
+  windows_asset: "llama-{tag}-bin-win-vulkan-x64.zip"
+  # Base URL for release downloads.
+  download_base: "https://github.com/ggml-org/llama.cpp/releases/download"
+
+wireguard:
+  # Official WireGuard for Windows installer.
+  windows_installer_url: "https://download.wireguard.com/windows-client/wireguard-installer.exe"
+
+opencode:
+  # How the macOS client installs OpenCode: "npm" or "brew".
+  install_via: "npm"
+  package: "opencode-ai"
