@@ -33,6 +33,9 @@ type Versions struct {
 		InstallVia string `yaml:"install_via"`
 		Package    string `yaml:"package"`
 	} `yaml:"opencode"`
+	Homebrew struct {
+		InstallURL string `yaml:"install_url"`
+	} `yaml:"homebrew"`
 }
 
 // WindowsAssetName resolves {tag} placeholders in the llama.cpp asset name.

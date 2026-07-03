@@ -22,3 +22,7 @@ opencode:
   # How the macOS client installs OpenCode: "npm" or "brew".
   install_via: "npm"
   package: "opencode-ai"
+
+homebrew:
+  # Official Homebrew install script (used only if brew is missing on macOS).
+  install_url: "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"

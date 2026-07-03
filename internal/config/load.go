@@ -92,6 +92,10 @@ func (c *Config) resolveDefaults() {
 	if src.FileURLTemplate == "" {
 		src.FileURLTemplate = "{base}/{repo}/resolve/main/{file}"
 	}
+
+	if c.Versions.Homebrew.InstallURL == "" {
+		c.Versions.Homebrew.InstallURL = "https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh"
+	}
 }
 
 // Validate checks that required fields are present and internally consistent.
