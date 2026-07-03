@@ -10,6 +10,7 @@ import (
 	"github.com/rezonmain/loca-agent/internal/llama"
 	"github.com/rezonmain/loca-agent/internal/model"
 	"github.com/rezonmain/loca-agent/internal/service"
+	"github.com/rezonmain/loca-agent/internal/wgtunnel"
 	"github.com/rezonmain/loca-agent/internal/wireguard"
 )
 
@@ -123,7 +124,7 @@ func writeServerConfigStep(d Deps) installer.Step {
 	return installer.FuncStep{
 		Label: "wireguard-server-config",
 		RunFunc: func(_ context.Context, st *installer.State) error {
-			keys, err := loadOrCreateServerKeys(l.serverKey)
+			keys, err := wgtunnel.LoadOrCreateKey(l.serverKey)
 			if err != nil {
 				return err
 			}

@@ -102,6 +102,24 @@ func (u *UI) Dimf(format string, a ...any) {
 	fmt.Fprintln(u.out, u.paint(dim, fmt.Sprintf(format, a...)))
 }
 
+// Prompt asks a free-text question and returns the trimmed answer. The default
+// is returned on empty input or a non-interactive stream.
+func (u *UI) Prompt(question, def string) string {
+	if def != "" {
+		fmt.Fprintf(u.out, "%s [%s]: ", question, def)
+	} else {
+		fmt.Fprintf(u.out, "%s: ", question)
+	}
+	line, err := u.in.ReadString('\n')
+	if err != nil {
+		return def
+	}
+	if line = strings.TrimSpace(line); line != "" {
+		return line
+	}
+	return def
+}
+
 // Confirm asks a yes/no question and returns the answer. def is returned on
 // empty input or a non-interactive stream.
 func (u *UI) Confirm(prompt string, def bool) bool {

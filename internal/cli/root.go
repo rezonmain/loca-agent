@@ -16,6 +16,7 @@ import (
 	"github.com/rezonmain/loca-agent/internal/command/status"
 	"github.com/rezonmain/loca-agent/internal/command/uninstall"
 	"github.com/rezonmain/loca-agent/internal/command/update"
+	wgcmd "github.com/rezonmain/loca-agent/internal/command/wireguard"
 	"github.com/rezonmain/loca-agent/internal/config"
 	"github.com/rezonmain/loca-agent/internal/errs"
 	"github.com/rezonmain/loca-agent/internal/logging"
@@ -85,6 +86,7 @@ func Execute(version string) int {
 		models.New(a),
 		status.New(a),
 		logs.New(a),
+		wgcmd.New(a),
 	)
 
 	if err := root.Execute(); err != nil {
